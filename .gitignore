@@ -1,0 +1,5 @@
+.venv/
+data/
+models/*.task
+__pycache__/
+.ipynb_checkpoints/

@@ -1,0 +1,9 @@
+certifi
+opencv-python
+mediapipe
+numpy
+pandas
+matplotlib
+seaborn
+networkx
+ipykernel
