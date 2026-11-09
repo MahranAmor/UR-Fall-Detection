@@ -50,6 +50,26 @@ python scripts/make_splits.py
 Writes `splits/sequences.csv` (one row per sequence; label 1 = fall, 0 = ADL) and `splits/splits.json` (5 stratified folds x 3 seeds, 6 falls + 8 ADLs per test fold).
 Both files are committed: every model must be trained and scored on these same folds, with whole sequences kept on one side of each split.
 
+## Baseline: depth features (no images)
+
+```bash
+python scripts/baseline_depth.py
+```
+
+Summarises the 8 precomputed depth features per sequence and scores logistic regression and a random forest on the fixed splits (threshold 0.5).
+Results go to `results/baseline_depth_summary.csv` and `results/baseline_depth_predictions.csv`.
+
+| Model | Recall | Precision | F1 | AUC |
+|---|---|---|---|---|
+| Logistic regression, smoothed (best) | 1.000 | 0.971 | 0.985 | 0.999 |
+| Logistic regression | 1.000 | 0.962 | 0.979 | 0.997 |
+| Random forest | 1.000 | 0.905 | 0.947 | 0.994 |
+| Control: sequence length only | 0.856 | 0.783 | 0.807 | 0.896 |
+
+Mean over 3 seeds x 5 folds, per sequence. The only error of the best model is `adl-40` (a false alarm).
+Note: at sequence level the task is easy, because every fall video starts upright and ends on the floor; the start-to-end change alone reaches F1 0.97.
+The skeleton models should therefore also be compared at clip level (fixed 1.5 s windows), where that shortcut is not available.
+
 ## Dataset citation
 
 B. Kwolek, M. Kepski, *Human fall detection on embedded platform using depth maps and wireless accelerometer*, Computer Methods and Programs in Biomedicine 117(3), 2014. License CC BY-NC-SA 4.0 (non-commercial academic use).

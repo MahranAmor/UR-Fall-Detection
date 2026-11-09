@@ -1,0 +1,6 @@
+model,recall_mean,recall_std,precision_mean,precision_std,f1_mean,f1_std,accuracy_mean,accuracy_std,auc_mean,auc_std
+logreg,1.0,0.0,0.962,0.065,0.979,0.035,0.981,0.033,0.997,0.011
+forest,1.0,0.0,0.905,0.112,0.947,0.064,0.948,0.063,0.994,0.012
+logreg_smooth,1.0,0.0,0.971,0.059,0.985,0.032,0.986,0.03,0.999,0.005
+forest_smooth,1.0,0.0,0.867,0.095,0.926,0.054,0.929,0.054,0.994,0.012
+control_length_only,0.856,0.107,0.783,0.151,0.807,0.093,0.819,0.101,0.896,0.075
