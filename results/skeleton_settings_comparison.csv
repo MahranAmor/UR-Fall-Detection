@@ -1,0 +1,8 @@
+kind,adl,adl,adl,adl,fall,fall,fall,all
+phase,lying,standing,transition,unlabeled,lying,standing,transition,all
+setting,,,,,,,,
+image_c50,0.01,0.571,0.864,0.0,0.167,1.0,0.933,0.504
+video_c50,0.1,0.646,1.0,0.0,0.583,1.0,0.967,0.592
+video_c30,0.107,0.653,1.0,0.0,0.875,1.0,1.0,0.615
+video_c30_rot,0.107,0.696,1.0,0.0,0.903,1.0,1.0,0.636
+person_crop,0.121,0.685,1.0,0.0,0.778,1.0,0.989,0.626

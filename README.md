@@ -39,7 +39,10 @@ MediaPipe 1.x uses the Tasks API and needs the model file:
 ```bash
 mkdir -p models
 curl -L -o models/pose_landmarker_full.task https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task
+curl -L -o models/efficientdet_lite0.tflite https://storage.googleapis.com/mediapipe-models/object_detector/efficientdet_lite0/float32/latest/efficientdet_lite0.tflite
 ```
+
+The second file is a person detector (EfficientDet-Lite0, COCO). Skeleton extraction finds the person first and runs the pose model on a crop around them: on its own, the pose model sometimes puts a skeleton on a chair next to a person lying on the floor.
 
 ## Evaluation splits
 
@@ -69,6 +72,29 @@ Results go to `results/baseline_depth_summary.csv` and `results/baseline_depth_p
 Mean over 3 seeds x 5 folds, per sequence. The only error of the best model is `adl-40` (a false alarm).
 Note: at sequence level the task is easy, because every fall video starts upright and ends on the floor; the start-to-end change alone reaches F1 0.97.
 The skeleton models should therefore also be compared at clip level (fixed 1.5 s windows), where that shortcut is not available.
+
+## Skeletons (step 3)
+
+```bash
+python scripts/extract_skeletons.py --compare   # optional: compare settings on the 7 hardest sequences (~15 min)
+python scripts/extract_skeletons.py             # extract all 70 sequences (~25 min, resumable)
+```
+
+Writes `data/processed/skeletons/<seq>.npz` (33 joints per frame; NaN where no person was kept; see the script docstring for the fields) and `results/skeleton_detection.csv`.
+
+Method (`person_crop`): find the person with the person detector, run the pose model on a crop around them, retry with the crop turned 90 degrees, and only fall back to a full-frame pose if it is confident (visibility >= 0.8) or continues the previous one. Settings compared on the hardest sequences (`results/skeleton_settings_comparison.csv`):
+
+| Setting | ADL lying | Fall lying | All frames | Skeletons on objects |
+|---|---|---|---|---|
+| IMAGE mode, conf 0.5 (exploration notebook) | 0.010 | 0.167 | 0.504 | yes |
+| VIDEO mode, conf 0.3, rotation | 0.107 | 0.903 | 0.636 | yes (chair, backpack) |
+| **person_crop (used)** | 0.121 | 0.778 | 0.626 | none found in visual checks |
+
+A missing frame can be filled or flagged later; a skeleton on a chair labelled "lying" cannot be detected later, so the person-first method was chosen despite the lower raw rate.
+
+Full run, all 70 sequences: 84.6% of frames have a skeleton; standing 87% (ADL) / 100% (fall), transition 97% / 98%, lying 67% / 85%.
+Remaining misses are people curled up on the floor, in the dark (`adl-23`) or mostly out of frame (`adl-38`).
+Joints MediaPipe cannot see get very low visibility (some leg joints are placed outside the image with visibility < 0.05), so later steps must treat low-visibility joints as missing.
 
 ## Dataset citation
 

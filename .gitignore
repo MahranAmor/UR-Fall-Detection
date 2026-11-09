@@ -1,5 +1,6 @@
 .venv/
 data/
 models/*.task
+models/*.tflite
 __pycache__/
 .ipynb_checkpoints/
