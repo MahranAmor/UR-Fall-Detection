@@ -7,3 +7,5 @@ matplotlib
 seaborn
 networkx
 ipykernel
+scikit-learn
+torch
