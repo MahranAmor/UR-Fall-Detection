@@ -96,6 +96,24 @@ Full run, all 70 sequences: 84.6% of frames have a skeleton; standing 87% (ADL) 
 Remaining misses are people curled up on the floor, in the dark (`adl-23`) or mostly out of frame (`adl-38`).
 Joints MediaPipe cannot see get very low visibility (some leg joints are placed outside the image with visibility < 0.05), so later steps must treat low-visibility joints as missing.
 
+## Cleaning (step 4)
+
+```bash
+python scripts/clean_skeletons.py
+```
+
+Writes `data/processed/clean/<seq>.npz` (joints in pixels, visibility, per-joint state observed / filled / missing, torso length) and `results/clean_summary.csv`. Each choice was measured on the data first:
+
+| Operation | Setting | Why |
+|---|---|---|
+| Remove flips | hip > 0.5 torso lengths from the median of the 7 surrounding frames | curled-up bodies get fitted upside down for a few frames; impossible hip jumps 431 -> 15, all 30 falls keep their drop |
+| Remove guesses | joints with visibility < 0.1 | about half of all leg joints are < 0.5 during falls but still usable, so only clear guesses go |
+| Fill gaps | linear, gaps <= 5 frames | 93% of gaps are this short; longer ones (up to 100 frames) stay missing |
+| Smooth | Savitzky-Golay, window 5 | standing jitter down to 40%, keeps 94% of the fall's peak speed (window 7: 88%, worst fall 53%) |
+
+Centring and scaling are done per clip in step 5, not per sequence: people's apparent size changes 1.8x within a typical ADL as they walk (1.1x in falls), and in 2D a person lying along the camera axis cannot be told apart from an upright one, so a sequence-level scale either distorts ADLs or erases the fall.
+Flip removal takes out 5.2% of fall frames but 0.5% of ADL frames, so missing frames themselves hint at the class: step 5 must treat gaps the same way for both.
+
 ## Dataset citation
 
 B. Kwolek, M. Kepski, *Human fall detection on embedded platform using depth maps and wireless accelerometer*, Computer Methods and Programs in Biomedicine 117(3), 2014. License CC BY-NC-SA 4.0 (non-commercial academic use).
