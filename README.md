@@ -41,6 +41,15 @@ mkdir -p models
 curl -L -o models/pose_landmarker_full.task https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task
 ```
 
+## Evaluation splits
+
+```bash
+python scripts/make_splits.py
+```
+
+Writes `splits/sequences.csv` (one row per sequence; label 1 = fall, 0 = ADL) and `splits/splits.json` (5 stratified folds x 3 seeds, 6 falls + 8 ADLs per test fold).
+Both files are committed: every model must be trained and scored on these same folds, with whole sequences kept on one side of each split.
+
 ## Dataset citation
 
 B. Kwolek, M. Kepski, *Human fall detection on embedded platform using depth maps and wireless accelerometer*, Computer Methods and Programs in Biomedicine 117(3), 2014. License CC BY-NC-SA 4.0 (non-commercial academic use).
