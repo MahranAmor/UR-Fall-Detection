@@ -143,6 +143,31 @@ Depth baseline on the same clips (the bar for step 6):
 
 Without the "ends on the floor" shortcut, the depth baseline drops from F1 0.985 per sequence to 0.845 per clip. Most false alarms are ADL clips of lying down on purpose.
 
+## Graph models (step 6)
+
+```bash
+python scripts/model_wl_kernel.py          # graph kernel
+python scripts/model_graph_embedding.py    # graph embedding
+python scripts/model_stgcn.py              # GNN (--no-graph / --no-hip for the checks)
+python scripts/compare_models.py           # results/model_comparison.csv
+```
+
+Skeleton graph (`scripts/graph_common.py`): 15 joints (nose, shoulders, elbows, wrists, hips, knees, ankles, one point per foot), 16 bones, one connected component; the nose is linked to both shoulders. All models use the same splits, threshold 0.5 and scoring as the depth baseline.
+
+| Model | Clip F1 | Clip AUC | Sequence recall | Sequence F1 | Clip F1 vs baseline, per fold |
+|---|---|---|---|---|---|
+| Depth features + random forest (baseline) | **0.845** | **0.982** | 1.000 | **0.947** | |
+| Graph embedding: spectral + bone directions + random forest | **0.824** | 0.971 | 0.833 | 0.858 | -0.021, better in 6/15 |
+| GNN: ST-GCN (3 blocks, 62k parameters) | 0.776 | 0.971 | 0.956 | 0.790 | -0.070, better in 5/15 |
+| Graph kernel: Weisfeiler-Lehman subtree (3 rounds) + SVM | 0.707 | 0.943 | 0.922 | 0.763 | -0.138, better in 0/15 |
+
+Mean over 3 seeds x 5 folds; the spread between folds is about +-0.1.
+
+- **From RGB video alone, the graph embedding nearly matches the depth camera features** (better in 6 of 15 folds).
+- **The GNN catches the most falls** (96% of fall sequences) at the cost of more false alarms.
+- **Does the graph structure help?** For the WL kernel, yes: clip F1 rises with every WL round (0 rounds = label counts only: 0.631, 1: 0.671, 2: 0.697, 3: 0.707). For the ST-GCN, no measurable effect: with the skeleton replaced by the identity (no message passing) it scores 0.802 with the hip inputs and 0.730 to 0.733 without them, the same as with the graph; the hip drop is the strongest single signal (+0.05 F1 with or without the graph).
+- The ST-GCN runs on the GPU when available; GPU training is not bit-for-bit deterministic, so its numbers can vary slightly between runs.
+
 ## Dataset citation
 
 B. Kwolek, M. Kepski, *Human fall detection on embedded platform using depth maps and wireless accelerometer*, Computer Methods and Programs in Biomedicine 117(3), 2014. License CC BY-NC-SA 4.0 (non-commercial academic use).

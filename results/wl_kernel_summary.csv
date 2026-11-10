@@ -1,0 +1,2 @@
+model,clip_recall_mean,clip_recall_std,clip_precision_mean,clip_precision_std,clip_f1_mean,clip_f1_std,clip_auc_mean,clip_auc_std,seq_recall_mean,seq_recall_std,seq_precision_mean,seq_precision_std,seq_f1_mean,seq_f1_std
+wl_kernel,0.729,0.101,0.711,0.145,0.707,0.092,0.943,0.03,0.922,0.086,0.659,0.128,0.763,0.107

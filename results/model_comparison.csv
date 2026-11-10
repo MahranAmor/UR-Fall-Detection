@@ -1,0 +1,9 @@
+model,clip_f1,clip_auc,clip_recall,seq_recall,seq_f1,clip_f1_vs_baseline
+Depth features + random forest (baseline),0.845 (0.071),0.982 (0.019),0.786 (0.107),1.000 (0.000),0.947 (0.067),
+Depth features + logistic regression,0.777 (0.080),0.973 (0.024),0.892 (0.068),1.000 (0.000),0.782 (0.070),"-0.068, better in 4/15 folds"
+Graph kernel: WL subtree + SVM,0.707 (0.092),0.943 (0.030),0.729 (0.101),0.922 (0.086),0.763 (0.107),"-0.138, better in 0/15 folds"
+Graph embedding: spectral + bones + random forest,0.824 (0.082),0.971 (0.025),0.739 (0.129),0.833 (0.154),0.858 (0.099),"-0.021, better in 6/15 folds"
+GNN: ST-GCN,0.776 (0.093),0.971 (0.027),0.897 (0.114),0.956 (0.099),0.790 (0.063),"-0.070, better in 5/15 folds"
+  ST-GCN without graph (check),0.802 (0.115),0.971 (0.028),0.882 (0.125),0.967 (0.093),0.841 (0.107),"-0.043, better in 5/15 folds"
+  ST-GCN without hip inputs (check),0.730 (0.125),0.953 (0.043),0.801 (0.188),0.889 (0.163),0.775 (0.104),"-0.115, better in 4/15 folds"
+  ST-GCN without graph or hip inputs (check),0.733 (0.166),0.968 (0.034),0.785 (0.232),0.878 (0.231),0.793 (0.157),"-0.112, better in 4/15 folds"

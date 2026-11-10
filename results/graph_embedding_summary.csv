@@ -1,0 +1,2 @@
+model,clip_recall_mean,clip_recall_std,clip_precision_mean,clip_precision_std,clip_f1_mean,clip_f1_std,clip_auc_mean,clip_auc_std,seq_recall_mean,seq_recall_std,seq_precision_mean,seq_precision_std,seq_f1_mean,seq_f1_std
+graph_embedding,0.739,0.129,0.951,0.06,0.824,0.082,0.971,0.025,0.833,0.154,0.909,0.111,0.858,0.099
