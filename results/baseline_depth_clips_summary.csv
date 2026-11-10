@@ -1,0 +1,3 @@
+model,clip_recall_mean,clip_recall_std,clip_precision_mean,clip_precision_std,clip_f1_mean,clip_f1_std,clip_auc_mean,clip_auc_std,seq_recall_mean,seq_recall_std,seq_precision_mean,seq_precision_std,seq_f1_mean,seq_f1_std
+forest,0.786,0.107,0.929,0.093,0.845,0.071,0.982,0.019,1.0,0.0,0.906,0.115,0.947,0.067
+logreg,0.892,0.068,0.697,0.112,0.777,0.08,0.973,0.024,1.0,0.0,0.647,0.097,0.782,0.07

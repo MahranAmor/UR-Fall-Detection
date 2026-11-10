@@ -114,6 +114,35 @@ Writes `data/processed/clean/<seq>.npz` (joints in pixels, visibility, per-joint
 Centring and scaling are done per clip in step 5, not per sequence: people's apparent size changes 1.8x within a typical ADL as they walk (1.1x in falls), and in 2D a person lying along the camera axis cannot be told apart from an upright one, so a sequence-level scale either distorts ADLs or erases the fall.
 Flip removal takes out 5.2% of fall frames but 0.5% of ADL frames, so missing frames themselves hint at the class: step 5 must treat gaps the same way for both.
 
+## Clips (step 5)
+
+```bash
+python scripts/make_clips.py              # data/processed/clips.npz + results/clips_index.csv
+python scripts/baseline_depth_clips.py    # depth baseline on the same clips
+```
+
+45-frame clips (1.5 s), a new one every 15 frames, every frame labeled. A clip is a **fall** if it holds at least 15 of the fall's 30 transition frames (at least 0.5 s of the fall); every ADL clip (including lying down on purpose) and fall-sequence clips before the fall are **not fall**; clips with only the edge of the fall or only lying afterwards are left out. Clips need at least 70% usable frames (at most 13 of 45 filled).
+Result: **502 clips, 70 fall, 432 not fall.**
+
+Each clip is normalised by its own first 10 usable frames: `pose` = joints relative to each frame's hip centre, `traj` = hip path relative to the start, both in reference torso lengths.
+
+Shortcut checks on the same splits (a model given only this information):
+
+| Information | AUC |
+|---|---|
+| share of missing / filled frames | 0.53 (chance) |
+| typical skeleton shake | 0.50 (chance) |
+| body size change in the clip | 0.68 (real fall motion: standing tall to lying) |
+
+Depth baseline on the same clips (the bar for step 6):
+
+| Model | Clip F1 | Clip AUC | Sequence recall | Sequence F1 |
+|---|---|---|---|---|
+| Random forest | 0.845 | 0.982 | 1.000 | 0.947 |
+| Logistic regression | 0.777 | 0.973 | 1.000 | 0.782 |
+
+Without the "ends on the floor" shortcut, the depth baseline drops from F1 0.985 per sequence to 0.845 per clip. Most false alarms are ADL clips of lying down on purpose.
+
 ## Dataset citation
 
 B. Kwolek, M. Kepski, *Human fall detection on embedded platform using depth maps and wireless accelerometer*, Computer Methods and Programs in Biomedicine 117(3), 2014. License CC BY-NC-SA 4.0 (non-commercial academic use).
