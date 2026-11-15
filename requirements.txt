@@ -8,4 +8,3 @@ seaborn
 networkx
 ipykernel
 scikit-learn
-torch
