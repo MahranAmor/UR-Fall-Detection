@@ -8,3 +8,4 @@ seaborn
 networkx
 ipykernel
 scikit-learn
+scikit-image
