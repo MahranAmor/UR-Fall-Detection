@@ -44,3 +44,28 @@ curl -L -o models/pose_landmarker_full.task https://storage.googleapis.com/media
 ## Dataset citation
 
 B. Kwolek, M. Kepski, *Human fall detection on embedded platform using depth maps and wireless accelerometer*, Computer Methods and Programs in Biomedicine 117(3), 2014. License CC BY-NC-SA 4.0 (non-commercial academic use).
+
+## B0: rule-based baseline (pose + state machine)
+
+Interpretable reference baseline, no training. A per-person state machine (`src/fallcv/rule.py`) needs
+`STANDING/WALKING/SITTING -> FALLING (rapid descent) -> LYING held 0.5 s -> FALL_DETECTED`.
+Lying down slowly gives `LYING` with no alarm; getting back up during `FALLING` cancels it.
+
+```bash
+python scripts/extract_poses.py --extractor mediapipe   # or yolo (needs torch + ultralytics), cached in data/interim/poses/
+python scripts/run_b0.py --extractor mediapipe --sweep  # metrics -> results/
+python scripts/render_b0.py fall-03                     # overlay video -> results/videos/
+```
+
+Event metrics: a fall is hit if the first alarm is within 3 s of its onset (first transition frame).
+Any alarm in an ADL is a false alarm. Thresholds were set by hand while looking at all 70 clips,
+so these numbers are optimistic (no held-out split yet).
+
+| Pose extractor | Falls hit | ADLs with alarm | FA / hour | Median latency | Lying-frame F1 |
+|---|---|---|---|---|---|
+| MediaPipe (VIDEO mode) | 17/30 | 10/40 | 121 | 1.4 s | 0.86 |
+| YOLO11m-pose | 13/30 | 11/40 | 133 | 1.6 s | 0.83 |
+
+Notes: URFD fall clips end about 0.7 s (median) after the person lands, so a long "lying" confirmation
+cannot be observed; with 1 s confirmation recall drops to 12/30. Most remaining false alarms are ADLs where
+the actor lies down on purpose in about 1 s, which geometry alone cannot separate from a fall.
