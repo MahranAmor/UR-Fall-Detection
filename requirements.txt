@@ -9,3 +9,5 @@ networkx
 ipykernel
 scikit-learn
 scikit-image
+torch
+torchvision
