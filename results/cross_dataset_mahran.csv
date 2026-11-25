@@ -1,0 +1,113 @@
+test,method,trained on,test set,starts,falls,ADLs,video accuracy,accuracy lowest,accuracy highest,falls in time,falls in time (official onset),falls in time (Adam's code),ADLs with a false alarm,falls with an early alarm,falls with an early alarm (official onset),median latency (s),thresholds,size (MB),ms per image
+"reference (training dataset, new people)",HOG + KNN,URFD,URFD cam0,1,30.0,40.0,0.843,0.843,0.843,30.0,30.0,30.0,11.0,0.0,0.0,0.617,0.995,2.549,26.664
+A,HOG + KNN,URFD,URFD cam1,1,30.0,0.0,,,,3.0,3.0,6.0,,10.0,10.0,0.6,0.995,2.549,26.664
+A,HOG + KNN,URFD,GMDCSA-24,1,79.0,81.0,0.775,0.775,0.775,52.0,52.0,64.0,28.0,18.0,18.0,1.205,0.995,2.549,26.664
+A,HOG + KNN,URFD,CAUCAFall,1,50.0,50.0,0.55,0.55,0.55,2.0,3.0,3.0,1.0,1.0,1.0,2.375,0.995,2.549,26.664
+"reference (training dataset, new people)",Colour HSV + SVM,URFD,URFD cam0,1,30.0,40.0,1.0,1.0,1.0,30.0,30.0,30.0,0.0,0.0,0.0,0.6,0.679,3.233,9.347
+A,Colour HSV + SVM,URFD,URFD cam1,1,30.0,0.0,,,,0.0,0.0,0.0,,0.0,0.0,,0.679,3.233,9.347
+A,Colour HSV + SVM,URFD,GMDCSA-24,1,79.0,81.0,0.506,0.506,0.506,0.0,0.0,0.0,0.0,0.0,0.0,,0.679,3.233,9.347
+A,Colour HSV + SVM,URFD,CAUCAFall,1,50.0,50.0,0.5,0.5,0.5,0.0,0.0,0.0,0.0,0.0,0.0,,0.679,3.233,9.347
+"reference (training dataset, new people)",MobileNetV2,URFD,URFD cam0,3,30.0,40.0,0.886,0.871,0.9,27.667,27.667,27.667,5.667,0.0,0.0,0.644,0.997 0.999 0.998,9.15,18.284
+A,MobileNetV2,URFD,URFD cam1,3,30.0,0.0,,,,3.333,3.333,3.333,,0.333,0.333,0.778,0.997 0.999 0.998,9.15,18.284
+A,MobileNetV2,URFD,GMDCSA-24,3,79.0,81.0,0.508,0.506,0.512,0.667,0.667,0.667,0.333,0.0,0.0,1.25,0.997 0.999 0.998,9.15,18.284
+A,MobileNetV2,URFD,CAUCAFall,3,50.0,50.0,0.5,0.5,0.5,0.0,0.0,0.0,0.0,0.0,0.0,,0.997 0.999 0.998,9.15,18.284
+"reference (training dataset, new people)",Skeleton LSTM,URFD,URFD cam0,3,30.0,40.0,0.957,0.943,0.986,28.667,28.667,28.667,1.667,0.0,0.0,0.778,0.998 0.995 0.989,0.124,31.98
+A,Skeleton LSTM,URFD,URFD cam1,3,30.0,0.0,,,,17.333,17.333,18.0,,2.667,2.667,0.822,0.998 0.995 0.989,0.124,31.98
+A,Skeleton LSTM,URFD,GMDCSA-24,3,79.0,81.0,0.835,0.8,0.875,68.0,68.0,69.333,17.667,1.0,1.667,1.007,0.998 0.995 0.989,0.124,31.98
+A,Skeleton LSTM,URFD,CAUCAFall,3,50.0,50.0,0.897,0.86,0.93,37.667,21.333,23.667,0.667,0.667,18.333,1.317,0.998 0.995 0.989,0.124,31.98
+"reference (training dataset, new people)",Skeleton GNN,URFD,URFD cam0,3,30.0,40.0,0.957,0.929,0.971,28.0,28.0,28.0,1.0,0.0,0.0,0.672,0.991 0.998 0.998,0.275,33.43
+A,Skeleton GNN,URFD,URFD cam1,3,30.0,0.0,,,,5.333,5.333,6.333,,2.0,2.0,0.683,0.991 0.998 0.998,0.275,33.43
+A,Skeleton GNN,URFD,GMDCSA-24,3,79.0,81.0,0.765,0.712,0.8,42.333,42.333,42.333,1.0,0.0,0.0,1.034,0.991 0.998 0.998,0.275,33.43
+A,Skeleton GNN,URFD,CAUCAFall,3,50.0,50.0,0.677,0.56,0.76,20.667,8.333,10.333,3.0,0.0,12.333,1.125,0.991 0.998 0.998,0.275,33.43
+"reference (training dataset, new people)",State machine,URFD,URFD cam0,1,30.0,40.0,0.871,0.871,0.871,27.0,27.0,27.0,6.0,0.0,0.0,1.133,0.6,0.0,31.13
+A,State machine,URFD,URFD cam1,1,30.0,0.0,,,,15.0,15.0,15.0,,3.0,3.0,1.2,0.6,0.0,31.13
+A,State machine,URFD,GMDCSA-24,1,79.0,81.0,0.856,0.856,0.856,60.0,60.0,60.0,4.0,0.0,0.0,1.45,0.6,0.0,31.13
+A,State machine,URFD,CAUCAFall,1,50.0,50.0,0.67,0.67,0.67,19.0,15.0,15.0,2.0,0.0,4.0,1.75,0.6,0.0,31.13
+B,HOG + KNN,GMDCSA + CAUCA,URFD cam0,1,30.0,40.0,0.6,0.6,0.6,18.0,18.0,18.0,16.0,0.0,0.0,1.083,0.995,2.549,26.664
+B,HOG + KNN,GMDCSA + CAUCA,URFD cam1,1,30.0,0.0,,,,3.0,3.0,4.0,,6.0,6.0,0.5,0.995,2.549,26.664
+"reference (training dataset, new people)",HOG + KNN,GMDCSA + CAUCA,GMDCSA-24,1,79.0,81.0,0.569,0.569,0.569,36.0,33.0,45.0,40.0,12.0,15.0,1.159,0.995,2.549,26.664
+"reference (training dataset, new people)",HOG + KNN,GMDCSA + CAUCA,CAUCAFall,1,50.0,50.0,0.78,0.78,0.78,35.0,18.0,32.0,13.0,2.0,19.0,1.3,0.995,2.549,26.664
+B,Colour HSV + SVM,GMDCSA + CAUCA,URFD cam0,1,30.0,40.0,0.671,0.671,0.671,7.0,7.0,7.0,0.0,0.0,0.0,0.9,0.622,3.233,9.347
+B,Colour HSV + SVM,GMDCSA + CAUCA,URFD cam1,1,30.0,0.0,,,,0.0,0.0,0.0,,2.0,2.0,,0.622,3.233,9.347
+"reference (training dataset, new people)",Colour HSV + SVM,GMDCSA + CAUCA,GMDCSA-24,1,79.0,81.0,0.588,0.588,0.588,19.0,18.0,18.0,7.0,1.0,2.0,1.514,0.622,3.233,9.347
+"reference (training dataset, new people)",Colour HSV + SVM,GMDCSA + CAUCA,CAUCAFall,1,50.0,50.0,0.78,0.78,0.78,32.0,8.0,21.0,14.0,7.0,31.0,1.025,0.622,3.233,9.347
+B,MobileNetV2,GMDCSA + CAUCA,URFD cam0,3,30.0,40.0,0.767,0.743,0.8,21.333,21.333,21.333,7.667,0.0,0.0,0.833,0.997 0.998 0.998,9.15,18.284
+B,MobileNetV2,GMDCSA + CAUCA,URFD cam1,3,30.0,0.0,,,,1.667,1.667,1.667,,0.333,0.333,0.5,0.997 0.998 0.998,9.15,18.284
+"reference (training dataset, new people)",MobileNetV2,GMDCSA + CAUCA,GMDCSA-24,3,79.0,81.0,0.702,0.669,0.725,47.0,47.0,49.667,21.0,4.333,5.0,1.159,0.997 0.998 0.998,9.15,18.284
+"reference (training dataset, new people)",MobileNetV2,GMDCSA + CAUCA,CAUCAFall,3,50.0,50.0,0.903,0.88,0.93,43.0,11.0,28.333,6.0,1.333,33.333,1.067,0.997 0.998 0.998,9.15,18.284
+B,Skeleton LSTM,GMDCSA + CAUCA,URFD cam0,3,30.0,40.0,0.881,0.871,0.9,30.0,30.0,30.0,8.333,0.0,0.0,0.656,0.996 0.991 0.998,0.124,31.98
+B,Skeleton LSTM,GMDCSA + CAUCA,URFD cam1,3,30.0,0.0,,,,21.0,21.0,22.0,,3.333,3.333,0.772,0.996 0.991 0.998,0.124,31.98
+"reference (training dataset, new people)",Skeleton LSTM,GMDCSA + CAUCA,GMDCSA-24,3,79.0,81.0,0.885,0.862,0.919,68.333,68.333,69.333,11.0,1.667,1.667,0.977,0.996 0.991 0.998,0.124,31.98
+"reference (training dataset, new people)",Skeleton LSTM,GMDCSA + CAUCA,CAUCAFall,3,50.0,50.0,0.91,0.88,0.93,42.333,10.0,14.0,1.667,0.333,32.667,0.917,0.996 0.991 0.998,0.124,31.98
+B,Skeleton GNN,GMDCSA + CAUCA,URFD cam0,3,30.0,40.0,0.843,0.743,0.929,29.333,29.333,29.333,10.333,0.0,0.0,0.628,0.998 0.963 0.977,0.275,33.43
+B,Skeleton GNN,GMDCSA + CAUCA,URFD cam1,3,30.0,0.0,,,,16.333,16.333,17.667,,3.0,3.0,0.75,0.998 0.963 0.977,0.275,33.43
+"reference (training dataset, new people)",Skeleton GNN,GMDCSA + CAUCA,GMDCSA-24,3,79.0,81.0,0.867,0.838,0.888,69.333,69.0,70.333,14.667,2.0,2.333,0.865,0.998 0.963 0.977,0.275,33.43
+"reference (training dataset, new people)",Skeleton GNN,GMDCSA + CAUCA,CAUCAFall,3,50.0,50.0,0.83,0.8,0.86,39.333,8.0,13.333,6.667,0.333,31.667,0.842,0.998 0.963 0.977,0.275,33.43
+B,State machine,GMDCSA + CAUCA,URFD cam0,1,30.0,40.0,0.829,0.829,0.829,30.0,30.0,30.0,12.0,0.0,0.0,1.033,0.3,0.0,31.13
+B,State machine,GMDCSA + CAUCA,URFD cam1,1,30.0,0.0,,,,22.0,22.0,22.0,,3.0,3.0,1.0,0.3,0.0,31.13
+"reference (training dataset, new people)",State machine,GMDCSA + CAUCA,GMDCSA-24,1,79.0,81.0,0.831,0.831,0.831,64.0,64.0,64.0,12.0,0.0,0.0,1.447,0.3,0.0,31.13
+"reference (training dataset, new people)",State machine,GMDCSA + CAUCA,CAUCAFall,1,50.0,50.0,0.7,0.7,0.7,28.0,17.0,17.0,9.0,1.0,12.0,1.45,0.3,0.0,31.13
+"reference (training dataset, new people)",HOG + KNN,URFD + CAUCA,URFD cam0,1,30.0,40.0,0.743,0.743,0.743,30.0,30.0,30.0,18.0,0.0,0.0,0.717,0.995,2.549,26.664
+other,HOG + KNN,URFD + CAUCA,URFD cam1,1,30.0,0.0,,,,4.0,4.0,8.0,,9.0,9.0,0.417,0.995,2.549,26.664
+B,HOG + KNN,URFD + CAUCA,GMDCSA-24,1,79.0,81.0,0.644,0.644,0.644,50.0,46.0,67.0,49.0,20.0,24.0,1.048,0.995,2.549,26.664
+"reference (training dataset, new people)",HOG + KNN,URFD + CAUCA,CAUCAFall,1,50.0,50.0,0.77,0.77,0.77,31.0,14.0,30.0,12.0,4.0,21.0,1.2,0.995,2.549,26.664
+"reference (training dataset, new people)",Colour HSV + SVM,URFD + CAUCA,URFD cam0,1,30.0,40.0,1.0,1.0,1.0,30.0,30.0,30.0,0.0,0.0,0.0,0.667,0.679,3.233,9.347
+other,Colour HSV + SVM,URFD + CAUCA,URFD cam1,1,30.0,0.0,,,,0.0,0.0,0.0,,0.0,0.0,,0.679,3.233,9.347
+B,Colour HSV + SVM,URFD + CAUCA,GMDCSA-24,1,79.0,81.0,0.506,0.506,0.506,0.0,0.0,0.0,0.0,0.0,0.0,,0.679,3.233,9.347
+"reference (training dataset, new people)",Colour HSV + SVM,URFD + CAUCA,CAUCAFall,1,50.0,50.0,0.69,0.69,0.69,19.0,7.0,16.0,8.0,2.0,15.0,1.0,0.679,3.233,9.347
+"reference (training dataset, new people)",MobileNetV2,URFD + CAUCA,URFD cam0,3,30.0,40.0,0.81,0.8,0.829,27.0,27.0,27.333,10.667,0.333,0.333,0.578,0.998 0.998 0.998,9.15,18.284
+other,MobileNetV2,URFD + CAUCA,URFD cam1,3,30.0,0.0,,,,11.667,11.667,15.0,,4.0,4.0,0.6,0.998 0.998 0.998,9.15,18.284
+B,MobileNetV2,URFD + CAUCA,GMDCSA-24,3,79.0,81.0,0.606,0.575,0.65,37.333,36.667,38.0,25.0,3.0,3.667,0.995,0.998 0.998 0.998,9.15,18.284
+"reference (training dataset, new people)",MobileNetV2,URFD + CAUCA,CAUCAFall,3,50.0,50.0,0.903,0.88,0.92,41.0,13.333,30.333,4.667,2.333,30.0,1.158,0.998 0.998 0.998,9.15,18.284
+"reference (training dataset, new people)",Skeleton LSTM,URFD + CAUCA,URFD cam0,3,30.0,40.0,0.948,0.929,0.971,30.0,30.0,30.0,3.667,0.0,0.0,0.717,0.999 0.989 0.998,0.124,31.98
+other,Skeleton LSTM,URFD + CAUCA,URFD cam1,3,30.0,0.0,,,,17.333,17.333,18.0,,3.0,3.0,0.672,0.999 0.989 0.998,0.124,31.98
+B,Skeleton LSTM,URFD + CAUCA,GMDCSA-24,3,79.0,81.0,0.865,0.844,0.906,71.667,70.0,72.0,17.333,1.667,3.333,1.04,0.999 0.989 0.998,0.124,31.98
+"reference (training dataset, new people)",Skeleton LSTM,URFD + CAUCA,CAUCAFall,3,50.0,50.0,0.94,0.94,0.94,44.333,13.333,17.667,1.333,0.0,31.0,0.983,0.999 0.989 0.998,0.124,31.98
+"reference (training dataset, new people)",Skeleton GNN,URFD + CAUCA,URFD cam0,3,30.0,40.0,0.905,0.886,0.929,28.0,28.0,28.0,4.667,0.0,0.0,0.678,0.995 0.986 0.989,0.275,33.43
+other,Skeleton GNN,URFD + CAUCA,URFD cam1,3,30.0,0.0,,,,18.667,18.667,19.667,,2.667,2.667,0.589,0.995 0.986 0.989,0.275,33.43
+B,Skeleton GNN,URFD + CAUCA,GMDCSA-24,3,79.0,81.0,0.848,0.788,0.888,66.333,67.0,67.667,14.333,1.667,1.667,1.04,0.995 0.986 0.989,0.275,33.43
+"reference (training dataset, new people)",Skeleton GNN,URFD + CAUCA,CAUCAFall,3,50.0,50.0,0.8,0.77,0.83,35.0,7.667,12.0,5.333,0.333,27.667,0.867,0.995 0.986 0.989,0.275,33.43
+"reference (training dataset, new people)",State machine,URFD + CAUCA,URFD cam0,1,30.0,40.0,0.857,0.857,0.857,30.0,30.0,30.0,10.0,0.0,0.0,1.033,0.4,0.0,31.13
+other,State machine,URFD + CAUCA,URFD cam1,1,30.0,0.0,,,,20.0,20.0,20.0,,3.0,3.0,1.083,0.4,0.0,31.13
+B,State machine,URFD + CAUCA,GMDCSA-24,1,79.0,81.0,0.844,0.844,0.844,67.0,67.0,67.0,13.0,0.0,0.0,1.438,0.4,0.0,31.13
+"reference (training dataset, new people)",State machine,URFD + CAUCA,CAUCAFall,1,50.0,50.0,0.76,0.76,0.76,31.0,23.0,23.0,6.0,1.0,9.0,1.7,0.4,0.0,31.13
+"reference (training dataset, new people)",HOG + KNN,URFD + GMDCSA,URFD cam0,1,30.0,40.0,0.9,0.9,0.9,28.0,28.0,28.0,5.0,0.0,0.0,0.733,0.995,2.549,26.664
+other,HOG + KNN,URFD + GMDCSA,URFD cam1,1,30.0,0.0,,,,2.0,2.0,2.0,,4.0,4.0,0.783,0.995,2.549,26.664
+"reference (training dataset, new people)",HOG + KNN,URFD + GMDCSA,GMDCSA-24,1,79.0,81.0,0.65,0.65,0.65,31.0,31.0,41.0,23.0,15.0,15.0,1.298,0.995,2.549,26.664
+B,HOG + KNN,URFD + GMDCSA,CAUCAFall,1,50.0,50.0,0.54,0.54,0.54,3.0,2.0,2.0,1.0,0.0,1.0,2.55,0.995,2.549,26.664
+"reference (training dataset, new people)",Colour HSV + SVM,URFD + GMDCSA,URFD cam0,1,30.0,40.0,1.0,1.0,1.0,30.0,30.0,30.0,0.0,0.0,0.0,0.55,0.622,3.233,9.347
+other,Colour HSV + SVM,URFD + GMDCSA,URFD cam1,1,30.0,0.0,,,,0.0,0.0,0.0,,2.0,2.0,,0.622,3.233,9.347
+"reference (training dataset, new people)",Colour HSV + SVM,URFD + GMDCSA,GMDCSA-24,1,79.0,81.0,0.656,0.656,0.656,27.0,27.0,27.0,3.0,0.0,0.0,1.61,0.622,3.233,9.347
+B,Colour HSV + SVM,URFD + GMDCSA,CAUCAFall,1,50.0,50.0,0.55,0.55,0.55,3.0,2.0,2.0,1.0,2.0,3.0,1.6,0.622,3.233,9.347
+"reference (training dataset, new people)",MobileNetV2,URFD + GMDCSA,URFD cam0,3,30.0,40.0,0.833,0.829,0.843,29.0,29.0,29.0,10.667,0.0,0.0,0.606,0.996 0.986 0.977,9.15,18.284
+other,MobileNetV2,URFD + GMDCSA,URFD cam1,3,30.0,0.0,,,,4.0,4.0,8.0,,7.667,7.667,0.494,0.996 0.986 0.977,9.15,18.284
+"reference (training dataset, new people)",MobileNetV2,URFD + GMDCSA,GMDCSA-24,3,79.0,81.0,0.619,0.531,0.675,26.0,26.333,27.0,9.667,1.0,1.0,1.205,0.996 0.986 0.977,9.15,18.284
+B,MobileNetV2,URFD + GMDCSA,CAUCAFall,3,50.0,50.0,0.66,0.56,0.73,14.0,8.667,13.667,4.333,1.667,7.667,1.525,0.996 0.986 0.977,9.15,18.284
+"reference (training dataset, new people)",Skeleton LSTM,URFD + GMDCSA,URFD cam0,3,30.0,40.0,0.957,0.943,0.971,29.333,29.333,29.333,2.333,0.0,0.0,0.756,0.999 0.996 0.989,0.124,31.98
+other,Skeleton LSTM,URFD + GMDCSA,URFD cam1,3,30.0,0.0,,,,17.0,17.0,18.0,,3.0,3.0,0.95,0.999 0.996 0.989,0.124,31.98
+"reference (training dataset, new people)",Skeleton LSTM,URFD + GMDCSA,GMDCSA-24,3,79.0,81.0,0.912,0.906,0.919,69.667,69.667,69.667,5.0,0.0,0.0,1.063,0.999 0.996 0.989,0.124,31.98
+B,Skeleton LSTM,URFD + GMDCSA,CAUCAFall,3,50.0,50.0,0.82,0.78,0.85,39.667,13.0,18.0,8.667,0.667,27.667,1.075,0.999 0.996 0.989,0.124,31.98
+"reference (training dataset, new people)",Skeleton GNN,URFD + GMDCSA,URFD cam0,3,30.0,40.0,0.895,0.871,0.914,28.333,28.333,28.333,5.667,0.0,0.0,0.589,0.996 0.986 0.971,0.275,33.43
+other,Skeleton GNN,URFD + GMDCSA,URFD cam1,3,30.0,0.0,,,,9.333,9.333,10.333,,2.667,2.667,0.878,0.996 0.986 0.971,0.275,33.43
+"reference (training dataset, new people)",Skeleton GNN,URFD + GMDCSA,GMDCSA-24,3,79.0,81.0,0.86,0.844,0.869,62.667,61.667,62.0,6.0,0.0,1.0,0.933,0.996 0.986 0.971,0.275,33.43
+B,Skeleton GNN,URFD + GMDCSA,CAUCAFall,3,50.0,50.0,0.687,0.57,0.76,29.333,7.667,13.0,10.667,0.0,21.667,0.833,0.996 0.986 0.971,0.275,33.43
+"reference (training dataset, new people)",State machine,URFD + GMDCSA,URFD cam0,1,30.0,40.0,0.914,0.914,0.914,30.0,30.0,30.0,6.0,0.0,0.0,1.133,0.55,0.0,31.13
+other,State machine,URFD + GMDCSA,URFD cam1,1,30.0,0.0,,,,16.0,16.0,16.0,,3.0,3.0,1.183,0.55,0.0,31.13
+"reference (training dataset, new people)",State machine,URFD + GMDCSA,GMDCSA-24,1,79.0,81.0,0.856,0.856,0.856,61.0,61.0,61.0,5.0,0.0,0.0,1.45,0.55,0.0,31.13
+B,State machine,URFD + GMDCSA,CAUCAFall,1,50.0,50.0,0.68,0.68,0.68,20.0,15.0,15.0,3.0,1.0,6.0,1.75,0.55,0.0,31.13
+"reference (training dataset, new people)",HOG + KNN (postures),URFD,URFD cam0,1,30.0,40.0,0.614,0.614,0.614,30.0,30.0,30.0,27.0,0.0,0.0,0.383,0.995,2.549,26.664
+A,HOG + KNN (postures),URFD,URFD cam1,1,30.0,0.0,,,,4.0,4.0,16.0,,16.0,16.0,0.383,0.995,2.549,26.664
+A,HOG + KNN (postures),URFD,GMDCSA-24,1,79.0,81.0,0.662,0.662,0.662,50.0,48.0,70.0,51.0,25.0,27.0,1.084,0.995,2.549,26.664
+A,HOG + KNN (postures),URFD,CAUCAFall,1,50.0,50.0,0.63,0.63,0.63,16.0,12.0,19.0,24.0,10.0,18.0,1.3,0.995,2.549,26.664
+"reference (training dataset, new people)",Colour HSV + SVM (postures),URFD,URFD cam0,1,30.0,40.0,0.957,0.957,0.957,29.0,29.0,29.0,2.0,0.0,0.0,0.667,0.991,3.233,9.347
+A,Colour HSV + SVM (postures),URFD,URFD cam1,1,30.0,0.0,,,,0.0,0.0,0.0,,0.0,0.0,,0.991,3.233,9.347
+A,Colour HSV + SVM (postures),URFD,GMDCSA-24,1,79.0,81.0,0.538,0.538,0.538,3.0,4.0,4.0,0.0,0.0,0.0,2.288,0.991,3.233,9.347
+A,Colour HSV + SVM (postures),URFD,CAUCAFall,1,50.0,50.0,0.5,0.5,0.5,0.0,0.0,0.0,0.0,0.0,0.0,,0.991,3.233,9.347
+"reference (training dataset, new people)",MobileNetV2 (postures),URFD,URFD cam0,3,30.0,40.0,0.933,0.9,0.957,27.0,27.0,27.333,2.0,0.333,0.333,0.506,1 0.999 0.999,9.15,18.284
+A,MobileNetV2 (postures),URFD,URFD cam1,3,30.0,0.0,,,,2.0,2.0,2.0,,0.667,0.667,0.75,1 0.999 0.999,9.15,18.284
+A,MobileNetV2 (postures),URFD,GMDCSA-24,3,79.0,81.0,0.538,0.506,0.556,11.0,14.333,14.333,10.0,0.0,0.0,1.765,1 0.999 0.999,9.15,18.284
+A,MobileNetV2 (postures),URFD,CAUCAFall,3,50.0,50.0,0.53,0.5,0.59,0.333,1.333,1.333,0.0,0.0,0.0,2.8,1 0.999 0.999,9.15,18.284
+"reference (training dataset, new people)",Skeleton LSTM (postures),URFD,URFD cam0,3,30.0,40.0,0.743,0.729,0.757,27.0,27.0,27.0,15.333,0.333,0.333,0.667,0.989 0.989 0.986,0.124,31.98
+A,Skeleton LSTM (postures),URFD,URFD cam1,3,30.0,0.0,,,,11.667,11.667,18.333,,11.0,11.0,0.989,0.989 0.989 0.986,0.124,31.98
+A,Skeleton LSTM (postures),URFD,GMDCSA-24,3,79.0,81.0,0.708,0.675,0.738,73.667,72.333,72.667,45.0,3.333,4.667,1.323,0.989 0.989 0.986,0.124,31.98
+A,Skeleton LSTM (postures),URFD,CAUCAFall,3,50.0,50.0,0.817,0.78,0.86,44.0,32.333,40.333,16.333,3.333,15.333,1.525,0.989 0.989 0.986,0.124,31.98

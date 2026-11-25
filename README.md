@@ -32,6 +32,19 @@ The script is safe to re-run: finished sequences are skipped.
 
 `data/` is git-ignored, so each of us downloads it locally.
 
+## New test datasets (notebooks 13a and 13b)
+
+Not downloaded by the script; place them by hand (`data/` is git-ignored). Licences as given by Adam in the mission file:
+
+| Folder | Dataset | Licence |
+|---|---|---|
+| `data/raw/urfd/rgb_cam1/` | URFD camera 1 (ceiling), the same 30 falls as camera 0 | CC BY-NC-SA 4.0 |
+| `data/raw/gmdcsa24/` | [GMDCSA-24](https://doi.org/10.5281/zenodo.12921216): 160 videos, 4 people | MIT |
+| `data/raw/caucafall/` | [CAUCAFall](https://doi.org/10.17632/7w7fccy7ky): 100 videos, 10 people | CC BY 4.0 |
+
+Notebook 13a prepares them, 13b tests the methods (test A: learn on URFD only; test B: learn on two datasets, test on the third).
+The scores are in `results/cross_dataset_mahran.csv`.
+
 ## Pose model
 
 MediaPipe 1.x uses the Tasks API and needs the model file:
