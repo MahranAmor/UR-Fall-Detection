@@ -1,0 +1,8 @@
+method,falls_hit,late,caught_at_all,pre_onset_alarms,latency_s
+B0 rule,14/30,0,16/30,2,0.9166666666666667
+"M1 random forest, full",3/30,0,3/30,0,1.5333333333333334
+"M1 gradient boosting, full",12/30,0,16/30,4,1.2000000000000002
+"M1 random forest, view_free",9/30,0,23/30,14,0.5666666666666667
+"M1 gradient boosting, view_free",15/30,0,27/30,15,0.5666666666666667
+"M1 random forest, view_free + aug",14/30,0,25/30,14,0.5666666666666667
+"M1 gradient boosting, view_free + aug",18/30,0,27/30,11,0.5666666666666667

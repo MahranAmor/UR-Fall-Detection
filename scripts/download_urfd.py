@@ -1,12 +1,15 @@
 """Download the UR Fall Detection dataset (URFD), camera 0 only.
 
-Usage: python scripts/download_urfd.py [--no-rgb]
+Usage: python scripts/download_urfd.py [--no-rgb] [--cam1]
 
 Gets, into data/raw/urfd/:
   videos/   70 preview mp4s (depth | RGB side by side, 640x240)
   rgb/      cam0 RGB frames, 640x480 PNG, one folder per sequence (~4.3 GB)
   sync/     per-sequence sync csv (frame, ms, interpolated accelerometer)
   labels/   urfall-cam0-falls.csv / -adls.csv (frame labels + depth features)
+
+--cam1 also gets the second (ceiling) camera, which exists for the 30 falls only:
+  rgb_cam1/  cam1 RGB frames, one folder per fall (~1.8 GB), no frame labels
 
 Re-running skips files that are already there.
 Source: http://fenix.ur.edu.pl/~mkepski/ds/uf.html (CC BY-NC-SA 4.0).
@@ -52,6 +55,14 @@ def main():
             out = ROOT / "rgb" / s
             if not (out.exists() and any(out.rglob("*.png"))):
                 z = ROOT / "_zips" / f"{s}-cam0-rgb.zip"
+                fetch(z.name, z)
+                with zipfile.ZipFile(z) as zf:
+                    zf.extractall(out)
+                z.unlink()
+        if "--cam1" in sys.argv and s.startswith("fall"):
+            out = ROOT / "rgb_cam1" / s
+            if not (out.exists() and any(out.rglob("*.png"))):
+                z = ROOT / "_zips" / f"{s}-cam1-rgb.zip"
                 fetch(z.name, z)
                 with zipfile.ZipFile(z) as zf:
                     zf.extractall(out)
