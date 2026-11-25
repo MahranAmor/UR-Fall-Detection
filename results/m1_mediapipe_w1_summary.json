@@ -1,0 +1,16 @@
+{
+  "win_s": 1.0,
+  "recall_std": 0.07453559924999298,
+  "falls_hit": "29/30",
+  "event_recall": 0.9666666666666667,
+  "late_detections": 0,
+  "median_latency_s": 0.8333333333333334,
+  "adl_false_alarms": 8,
+  "adl_seqs_with_alarm": "8/40",
+  "pre_onset_false_alarms": 0,
+  "fa_per_hour_adl": 96.63348618722736,
+  "videos_right": "61/70",
+  "video_accuracy": 0.8714285714285714,
+  "falls_caught": "29/30",
+  "adl_videos_alarmed": "8/40"
+}

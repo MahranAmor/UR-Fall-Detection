@@ -1,0 +1,12 @@
+{
+  "win_s": 1.0,
+  "recall_std": 0.07453559924999298,
+  "falls_hit": "29/30",
+  "event_recall": 0.9666666666666667,
+  "late_detections": 0,
+  "median_latency_s": 0.8,
+  "adl_false_alarms": 6,
+  "adl_seqs_with_alarm": "6/40",
+  "pre_onset_false_alarms": 0,
+  "fa_per_hour_adl": 72.47511464042053
+}

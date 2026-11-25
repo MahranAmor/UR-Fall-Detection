@@ -54,3 +54,14 @@ def evaluate(results, onsets, lab, window_s=3.0):
     summary["down_f1"] = 2 * summary["down_precision"] * summary["down_recall"] / \
         max(summary["down_precision"] + summary["down_recall"], 1e-9)
     return df, summary
+
+
+def video_level(results):
+    """Offline score of notebooks 02-10: a video is 'fall' if it raised any alarm at all."""
+    det = {s: len(a) > 0 for s, (_, a) in results.items()}
+    falls = [s for s in det if s.startswith("fall")]
+    adls = [s for s in det if s.startswith("adl")]
+    caught = sum(det[s] for s in falls)
+    fa = sum(det[s] for s in adls)
+    return {"videos_right": f"{caught + len(adls) - fa}/{len(det)}", "video_accuracy": (caught + len(adls) - fa) / len(det),
+            "falls_caught": f"{caught}/{len(falls)}", "adl_videos_alarmed": f"{fa}/{len(adls)}"}
