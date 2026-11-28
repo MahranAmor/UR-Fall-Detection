@@ -69,3 +69,21 @@ so these numbers are optimistic (no held-out split yet).
 Notes: URFD fall clips end about 0.7 s (median) after the person lands, so a long "lying" confirmation
 cannot be observed; with 1 s confirmation recall drops to 12/30. Most remaining false alarms are ADLs where
 the actor lies down on purpose in about 1 s, which geometry alone cannot separate from a fall.
+
+## Live demo (webcam)
+
+Runs B0 frame by frame on a webcam or a video file. No dataset or GPU needed, only the pose model above.
+Tested with Python 3.12, mediapipe 1.2.2, opencv-python 5.0, numpy 2.5.
+
+```bash
+pip install opencv-python mediapipe==1.2.2 numpy
+python scripts/live_demo.py                    # default webcam (--cam 1 for another one)
+python scripts/live_demo.py --video clip.mp4   # a video file instead
+```
+
+Keys: `q` quit, `r` reset. Stand fully in view (head to feet) at the start so it learns your upright height.
+Camera 2-3 m away at chest height, whole body visible, good light; fall onto a mattress.
+Alarms are printed as `FALL DETECTED (hh:mm:ss)`. Timers use the measured processing fps (`--fps` to force it).
+Quick check without a webcam: build an mp4 from a URFD clip
+(`ffmpeg -framerate 30 -i data/raw/urfd/rgb/fall-03/fall-03-cam0-rgb/fall-03-cam0-rgb-%03d.png f3.mp4`)
+and run `--video f3.mp4`; it should print one alarm.
