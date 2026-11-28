@@ -87,3 +87,19 @@ Alarms are printed as `FALL DETECTED (hh:mm:ss)`. Timers use the measured proces
 Quick check without a webcam: build an mp4 from a URFD clip
 (`ffmpeg -framerate 30 -i data/raw/urfd/rgb/fall-03/fall-03-cam0-rgb/fall-03-cam0-rgb-%03d.png f3.mp4`)
 and run `--video f3.mp4`; it should print one alarm.
+
+## Live demo with the final LSTM (recommended)
+
+`scripts/detect.py` and `models/fall_lstm.pt` come from Mahran's branch (notebook 14, 3 LSTMs, threshold 0.989), unchanged.
+`scripts/live_combo.py` wraps that model for live use: MediaPipe keeps the real person (2 candidates, no jump onto objects),
+the LSTM score (> 0.85) starts a check, and the alarm needs the person down (lying / sitting on the floor, from the 3D skeleton)
+for 1 s within 4 s, or vanishing low in the image. Standing up for 1.5 s ends it.
+
+```bash
+pip install opencv-python mediapipe==1.2.2 numpy pandas torch
+python scripts/live_combo.py --camera 0                          # live (q quit, r reset)
+python scripts/live_combo.py --camera 0 --save run.mp4 --log run.csv   # also record the result and a per-frame log
+python scripts/live_combo.py --video clip.mp4                    # a video file
+```
+Camera high in a corner or at the side, whole body visible, good light; fall onto a mattress.
+Top left = posture, top right = NORMAL / CHECK / ALARM, alarms are printed as `FALL DETECTED at ... s`.

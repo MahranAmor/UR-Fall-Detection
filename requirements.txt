@@ -10,3 +10,4 @@ ipykernel
 scikit-learn
 scikit-image
 ultralytics
+torch
