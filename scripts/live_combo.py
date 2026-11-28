@@ -37,7 +37,7 @@ class Settings:
     trigger = 0.85          # LSTM score that starts a check (the LSTM's own threshold 0.989 misses falls at the image edge)
     sure = 0.989            # above this (the threshold of notebook 14), being on all fours also confirms
     check_s = 4.0           # how long after the trigger we wait for the person to be down
-    down_s = 1.0            # down this long during a check -> ALARM
+    down_s = 1.0            # down this long during a check -> ALARM (short dataset clips may end before this)
     lost_s = 0.8            # vanished this long during a check, last seen low in the image -> ALARM
     low_y = 0.65            # "low in the image" (hips below this fraction of the height)
     recover_s = 1.5         # standing this long ends an alarm or a check
